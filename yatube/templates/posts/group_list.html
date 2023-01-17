@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-  {{ title }}
+  {{ group.title }} 
 {% endblock %}
 {% block content %}
   <div>
-    <h1> {{ Text }}</h1>
+    <h1> {{ group.name }}</h1>
       <p>{{ group.description }}</p>
     {% for post in posts %}
       <ul>
