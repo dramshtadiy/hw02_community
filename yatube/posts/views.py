@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
-CONS = 10
+LIMITER: int = 10
 
 
 def index(request):
-    posts = Post.objects.select_related()[:CONS]
+    posts = Post.objects.all().select_related('author', 'group')[:LIMITER]
     # В словаре context отправляем информацию в шаблон
     context = {
         'posts': posts,
@@ -23,7 +23,7 @@ def group_posts(request, slug):
     # Метод .filter позволяет ограничить поиск по критериям.
     # Это аналог добавления
     # условия WHERE group_id = {group_id}
-    posts = Post.objects.select_related()[:CONS]
+    posts = Post.objects.all().select_related('author', 'group')[:LIMITER]
     context = {
         'group': group,
         'posts': posts}
