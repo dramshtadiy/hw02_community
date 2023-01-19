@@ -20,6 +20,10 @@ class Post(models.Model):
         related_name='posts'
     )
 
+    def __str__(self):
+        # выводим текст поста
+        return self.text
+
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
